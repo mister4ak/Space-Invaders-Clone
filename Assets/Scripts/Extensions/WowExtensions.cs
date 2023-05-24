@@ -7,7 +7,6 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using static UnityEngine.Object;
 using static UnityEngine.Random;
-using Random = UnityEngine.Random;
 
 namespace Extensions
 {
