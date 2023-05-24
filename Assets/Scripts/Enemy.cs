@@ -1,8 +1,5 @@
 using UnityEngine;
 
-namespace Scripts
+public class Enemy : MonoBehaviour
 {
-    public class Enemy : MonoBehaviour
-    {
-    }
 }

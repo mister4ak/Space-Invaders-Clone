@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts
+public interface IMovementInput
 {
-    public interface IMovementInput
-    {
-        Vector2 GetInput();
-    }
+    Vector2 GetInput();
 }
