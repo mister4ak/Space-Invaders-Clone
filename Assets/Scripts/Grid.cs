@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Common.ObjectPool;
 using Extensions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum MoveDirectionType
 {
@@ -14,7 +17,7 @@ public class Grid : MonoBehaviour
 {
     [SerializeField] private Cell _cellPrefab;
     [SerializeField] private List<Cell> _cells;
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private List<Enemy> _enemyPrefabs;
     [SerializeField] private int _rowsCount;
     [SerializeField] private int _columnsCount;
     [SerializeField] private float _xPadding = 1f;
@@ -25,8 +28,10 @@ public class Grid : MonoBehaviour
     [SerializeField] private float _leftBorder = -8f;
     [SerializeField] private float _rightBorder = 8f;
     [SerializeField] private float _updateTimer = 0.025f;
+    [SerializeField] private Vector2 _shootCooldownRange = new Vector2(1f, 10f);
 
     private float _timer;
+    private float _shootTimer;
     private bool _isBorderReached;
     private MoveDirectionType _moveDirectionType;
     private MoveDirectionType _previousMoveDirectionType;
@@ -62,8 +67,6 @@ public class Grid : MonoBehaviour
         rowContainer.localPosition = Vector3.zero;
         return rowContainer;
     }
-
-    #endregion
     
     private Vector2 GetPosition(int i)
     {
@@ -73,13 +76,21 @@ public class Grid : MonoBehaviour
         return position;
     }
 
+    #endregion
+
     private void Start()
     {
         _moveDirectionType = MoveDirectionType.Left;
         _currentCellIndex = 0;
+        SetRandomShootTime();
         foreach (var cell in _cells)
         {
-            var enemy = Instantiate(_enemyPrefab, cell.transform.position, Quaternion.identity);
+            var enemyPrefab = _enemyPrefabs.FirstOrDefault(prefab => prefab.Type == cell.EnemyType);
+            if (enemyPrefab == default)
+                throw new InvalidOperationException("Can't find enemy prefab with needed EnemyType");
+            
+            var enemy = Pool.Get(enemyPrefab, cell.transform.position);
+            enemy.Initialize();
             enemy.Died += OnEnemyDied;
             _enemies.Add(enemy);
         }
@@ -95,11 +106,33 @@ public class Grid : MonoBehaviour
 
     private void Update()
     {
+        HandleEnemyShot();
+        HandleMove();
+    }
+
+    private void HandleEnemyShot()
+    {
+        _shootTimer -= Time.deltaTime;
+
+        if (_shootTimer > 0) return;
+        
+        SetRandomShootTime();
+        _enemies.GetRandomElement().Shot();
+    }
+
+    private void SetRandomShootTime()
+    {
+        _shootTimer = Random.Range(_shootCooldownRange.x, _shootCooldownRange.y);
+    }
+
+    private void HandleMove()
+    {
         _timer += Time.deltaTime;
+
         if (_timer < _updateTimer) return;
 
         _timer = 0f;
-        
+
         switch (_moveDirectionType)
         {
             case MoveDirectionType.Left:

@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &212100453287706681
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2073900480854098096, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Size.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073900480854098096, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073900480854098096, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5805535131647024194, guid: 90bc8b8579984594f8f0852dc053b600, type: 3}
+    - target: {fileID: 2073900480854098096, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953455771117307497, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Name
+      value: Bullet_1 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039948609796102992, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Size.x
+      value: 0.13090903
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039948609796102992, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2855218
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039948609796102992, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.012944773
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039948609796102992, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.022832036
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}

@@ -1,7 +1,8 @@
-﻿using ScriptableObjects.Classes;
+﻿using MainPlayer.Movement;
+using ScriptableObjects.Classes;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private BorderData _borderData;
@@ -9,12 +10,20 @@ public class Player : MonoBehaviour
 
     private PlayerMover _mover;
 
+    public ShooterType ShooterType { get; private set; }
+
     private void Awake()
     {
         var movementInput = new KeyboardMovementInput(false);
         _mover = new PlayerMover(movementInput, transform, _movementSpeed, _borderData);
-        
-        _weapon.Initialize();
+
+        ShooterType = ShooterType.Player;
+        _weapon.Initialize(ShooterType);
+    }
+
+    public void TakeDamage()
+    {
+        Debug.Log("Player take damage");
     }
 
     private void Update()

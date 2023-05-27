@@ -5,15 +5,15 @@ namespace Common.ObjectPool
 {
     public interface IPoolable
     {
-        public int ID { get; }
-        public string ContainerName { get; }
-        public event Action OnRestart;
-        public event Action<PoolItem> OnRelease;
+        int ID { get; }
+        string ContainerName { get; }
+        event Action OnRestart;
+        event Action<PoolItem> OnRelease;
         Transform MyTransform();
-        public void Restart();
-        public void Retain(int id, string containerName);
-        public void Release(bool disableObject = true);
-        public void SetParent(Transform parent);
-        public void SetActive(bool active);
+        void Restart();
+        void Retain(int id, string containerName);
+        void Release(bool disableObject = true);
+        void SetParent(Transform parent);
+        void SetActive(bool active);
     }
 }

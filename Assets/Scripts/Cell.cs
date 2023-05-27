@@ -2,5 +2,5 @@
 
 public class Cell : MonoBehaviour
 {
-    public bool IsBusy;
+    public EnemyType EnemyType;
 }

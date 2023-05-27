@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3864936308879988761}
   - component: {fileID: 8037417834346083737}
   - component: {fileID: 7039948609796102992}
-  m_Layer: 0
-  m_Name: Bullet
+  m_Layer: 8
+  m_Name: BulletBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623b327e0f434325b0125998df37d9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletExplosionPrefab: {fileID: 4152906126520312121, guid: a2994509fab078042bec81f04a56a835, type: 3}
 --- !u!50 &8037417834346083737
 Rigidbody2D:
   serializedVersion: 4
@@ -104,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 520586946196222371}
   - component: {fileID: 2073900480854098096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ee7857b4379c37e4190bd25b4839fbee, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -175,6 +176,6 @@ SpriteRenderer:
   m_Size: {x: 0.029411765, y: 0.1764706}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

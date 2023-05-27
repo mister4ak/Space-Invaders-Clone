@@ -1,16 +1,19 @@
-﻿using System;
-using Common.ObjectPool;
+﻿using Common.ObjectPool;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class Bullet : PoolItem
     {
+        [SerializeField] private BulletExplosion _bulletExplosionPrefab;
+        
         private float _speed;
         private Vector2 _direction;
+        private ShooterType _shooterType;
 
-        public void Initialize(Vector2 direction, float speed)
+        public void Initialize(ShooterType shooterType, Vector2 direction, float speed)
         {
+            _shooterType = shooterType;
             _direction = direction;
             _speed = speed;
         }
@@ -22,12 +25,18 @@ namespace DefaultNamespace
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out Enemy enemy))
+            if (other.TryGetComponent(out IDamageable damageable))
             {
-                enemy.TakeDamage();
+                if (damageable.ShooterType == _shooterType) return;
+                
+                damageable.TakeDamage();
+                Release();
             }
-            
-            Release();
+            else
+            {
+                Pool.Get(_bulletExplosionPrefab, transform.position);
+                Release();
+            }
         }
     }
 }
