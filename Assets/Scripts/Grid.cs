@@ -13,6 +13,7 @@ public class Grid : MonoBehaviour
 {
     [SerializeField] private Cell _cellPrefab;
     [SerializeField] private List<Cell> _cells;
+    [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private int _rowsCount;
     [SerializeField] private int _columnsCount;
     [SerializeField] private float _xPadding = 1f;
@@ -29,6 +30,7 @@ public class Grid : MonoBehaviour
     private MoveDirectionType _moveDirectionType;
     private MoveDirectionType _previousMoveDirectionType;
     private int _currentCellIndex;
+    private List<Enemy> _enemies = new();
 
     public void CreateGrid()
     {
@@ -55,6 +57,20 @@ public class Grid : MonoBehaviour
     {
         _moveDirectionType = MoveDirectionType.Left;
         _currentCellIndex = 0;
+        foreach (var cell in _cells)
+        {
+            var enemy = Instantiate(_enemyPrefab, cell.transform.position, Quaternion.identity);
+            enemy.Died += OnEnemyDied;
+            _enemies.Add(enemy);
+        }
+    }
+
+    private void OnEnemyDied(Enemy enemy)
+    {
+        enemy.Died -= OnEnemyDied;
+        if (_currentCellIndex > _enemies.IndexOf(enemy) || _currentCellIndex == _enemies.Count)
+            _currentCellIndex--;
+        _enemies.Remove(enemy);
     }
 
     private void Update()
@@ -67,15 +83,15 @@ public class Grid : MonoBehaviour
         switch (_moveDirectionType)
         {
             case MoveDirectionType.Left:
-                MoveCell(-_xDelta, 0f);
+                MoveEnemy(-_xDelta, 0f);
                 CheckBorder();
                 break;
             case MoveDirectionType.Right:
-                MoveCell(_xDelta, 0f);
+                MoveEnemy(_xDelta, 0f);
                 CheckBorder();
                 break;
             case MoveDirectionType.Down:
-                MoveCell(0f, _yDelta);
+                MoveEnemy(0f, _yDelta);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -88,20 +104,20 @@ public class Grid : MonoBehaviour
     {
         if (_isBorderReached) return;
         
-        var cellPosition = _cells[_currentCellIndex].transform.position;
+        var cellPosition = _enemies[_currentCellIndex].transform.position;
         if (cellPosition.x <= _leftBorder || cellPosition.x >= _rightBorder)
             _isBorderReached = true;
     }
 
-    private void MoveCell(float deltaX, float deltaY)
+    private void MoveEnemy(float deltaX, float deltaY)
     {
-        _cells[_currentCellIndex].transform.position += new Vector3(deltaX, deltaY);
+        _enemies[_currentCellIndex].Move(deltaX, deltaY);
     }
 
     private void IncreaseCellIndex()
     {
         _currentCellIndex++;
-        if (_currentCellIndex < _cells.Count) return;
+        if (_currentCellIndex < _enemies.Count) return;
         
         ResetCellIndex();
         CalculateNextMoveDirection();
