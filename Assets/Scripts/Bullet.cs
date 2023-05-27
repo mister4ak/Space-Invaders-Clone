@@ -1,9 +1,10 @@
 ﻿using System;
+using Common.ObjectPool;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : PoolItem
     {
         private float _speed;
         private Vector2 _direction;
@@ -25,7 +26,8 @@ namespace DefaultNamespace
             {
                 enemy.TakeDamage();
             }
-            Destroy(gameObject);
+            
+            Release();
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Extensions;
 using UnityEngine;
 
 public enum MoveDirectionType
@@ -30,21 +31,40 @@ public class Grid : MonoBehaviour
     private MoveDirectionType _moveDirectionType;
     private MoveDirectionType _previousMoveDirectionType;
     private int _currentCellIndex;
-    private List<Enemy> _enemies = new();
+    private readonly List<Enemy> _enemies = new();
+
+    #region Create Grid Editor
 
     public void CreateGrid()
     {
-        foreach (var cell in _cells) 
-            DestroyImmediate(cell.gameObject);
+        transform.DestroyChildren(true);
         _cells.Clear();
         
-        for (int i = 0; i < _rowsCount * _columnsCount; i++)
+        for (int rowIndex = 0; rowIndex < _rowsCount; rowIndex++)
         {
-            var point = Instantiate(_cellPrefab, transform.position + (Vector3) GetPosition(i), Quaternion.identity, transform);
-            _cells.Add(point);
+            var rowContainer = CreateRowContainer(rowIndex);
+
+            for (int columnIndex = 0; columnIndex < _columnsCount; columnIndex++)
+            {
+                var point = Instantiate(_cellPrefab, 
+                    transform.position + (Vector3) GetPosition(rowIndex * _columnsCount + columnIndex), 
+                    Quaternion.identity, 
+                    rowContainer);
+                _cells.Add(point);
+            }
         }
     }
 
+    private Transform CreateRowContainer(int rowIndex)
+    {
+        Transform rowContainer = new GameObject($"Row_{rowIndex + 1}").transform;
+        rowContainer.SetParent(transform);
+        rowContainer.localPosition = Vector3.zero;
+        return rowContainer;
+    }
+
+    #endregion
+    
     private Vector2 GetPosition(int i)
     {
         float x = (i % _columnsCount - (_columnsCount - 1) / 2f) * _xPadding;
