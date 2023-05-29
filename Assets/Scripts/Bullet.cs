@@ -5,7 +5,7 @@ namespace DefaultNamespace
 {
     public class Bullet : PoolItem
     {
-        [SerializeField] private BulletExplosion _bulletExplosionPrefab;
+        [SerializeField] private ExplosionFX _explosionFXPrefab;
         
         private float _speed;
         private Vector2 _direction;
@@ -34,7 +34,7 @@ namespace DefaultNamespace
             }
             else
             {
-                Pool.Get(_bulletExplosionPrefab, transform.position);
+                Pool.Get(_explosionFXPrefab, transform.position);
                 Release();
             }
         }

@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapon: {fileID: 3240755119709778328}
   _type: 0
+  _explosionFXPrefab: {fileID: 2685267359947275854, guid: 07005d7cb2738c54386eb6e12dbac728, type: 3}
 --- !u!61 &4838219185178697313
 BoxCollider2D:
   m_ObjectHideFlags: 0

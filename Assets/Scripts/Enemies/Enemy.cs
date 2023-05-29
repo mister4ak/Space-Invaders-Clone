@@ -1,5 +1,6 @@
 using System;
 using Common.ObjectPool;
+using ScriptableObjects.Classes;
 using UnityEngine;
 
 public class Enemy : PoolItem, IDamageable
@@ -7,10 +8,11 @@ public class Enemy : PoolItem, IDamageable
     public event Action<Enemy> Died;
 
     [SerializeField] private Weapon _weapon;
-    [SerializeField] private EnemyType _type;
+    [SerializeField] private EnemyData _data;
+    [SerializeField] private ExplosionFX _explosionFXPrefab;
 
     public ShooterType ShooterType { get; private set; }
-    public EnemyType Type => _type;
+    public EnemyType Type => _data.Type;
 
     public void Initialize()
     {
@@ -25,8 +27,9 @@ public class Enemy : PoolItem, IDamageable
 
     public void TakeDamage()
     {
-        Destroy(gameObject);
+        Pool.Get(_explosionFXPrefab, transform.position);
         Died?.Invoke(this);
+        Release();
     }
 
     public void Shot()
