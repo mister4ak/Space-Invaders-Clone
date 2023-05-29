@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5573382172621898786, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
       propertyPath: m_Name
-      value: HardEnemy
+      value: LightEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6098363262912508783, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
       propertyPath: m_Size.x
@@ -71,5 +71,9 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6869382844732689186, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 5383bc409d86fcb4f9c909d0ad113fce, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c63612f077534be4e9decfe79f94de1d, type: 3}

@@ -12,7 +12,7 @@ public class Enemy : PoolItem, IDamageable
     [SerializeField] private ExplosionFX _explosionFXPrefab;
 
     public ShooterType ShooterType { get; private set; }
-    public EnemyType Type => _data.Type;
+    public EnemyData Data => _data;
 
     public void Initialize()
     {

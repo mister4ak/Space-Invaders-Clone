@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4ed790c27a8446b9a82f819fe7cfafd, type: 3}
-  m_Name: PlayerBorderData
+  m_Script: {fileID: 11500000, guid: 5444df09e7df40b781ee2401e8894dd1, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _minX: -8.25
-  _maxX: 8.25
-  _minY: -4.75
-  _maxY: -3
+  _movementSpeed: 5
+  _maxHealth: 3

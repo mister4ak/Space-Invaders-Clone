@@ -25,6 +25,11 @@ namespace MainPlayer.Movement
             _transform.position = ClampPosition(_transform.position + movement);
         }
 
+        public void Warp(Vector2 position)
+        {
+            _transform.position = position;
+        }
+
         private Vector3 ClampPosition(Vector3 position)
         {
             float clampedX = Mathf.Clamp(position.x, _borderData.MinX, _borderData.MaxX);

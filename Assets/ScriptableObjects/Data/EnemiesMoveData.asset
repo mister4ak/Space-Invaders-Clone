@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4ed790c27a8446b9a82f819fe7cfafd, type: 3}
-  m_Name: PlayerBorderData
+  m_Script: {fileID: 11500000, guid: a067352bbc154c7cb72948445dfb3e45, type: 3}
+  m_Name: EnemiesMoveData
   m_EditorClassIdentifier: 
-  _minX: -8.25
-  _maxX: 8.25
-  _minY: -4.75
-  _maxY: -3
+  _xDelta: 0.25
+  _yDelta: -0.25
+  _leftBorder: -8
+  _rightBorder: 8
+  _bottomBorder: -3.5
+  _updateTimer: 0.025

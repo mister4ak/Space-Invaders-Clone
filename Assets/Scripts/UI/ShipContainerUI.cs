@@ -16,7 +16,7 @@ namespace UI
         public void Initialize()
         {
             _shipImage.sprite = _enemyData.BaseSprite;
-            _pointsText.text = $"= {_enemyData.RewardPoints}";
+            _pointsText.text = $"= {_enemyData.RewardScore}";
         }
 
         public List<TMP_Text> GetAllTexts()

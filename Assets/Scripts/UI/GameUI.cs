@@ -1,66 +1,59 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using DG.Tweening;
-using Extensions;
-using TMPro;
 using UnityEngine;
 
 namespace UI
 {
-    public class GameUI : MonoBehaviour
+    public sealed class GameUI : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _headerLabel;
-        [SerializeField] private TMP_Text _scoreTableLabel;
-        [SerializeField] private List<ShipContainerUI> _shipContainers;
-        [SerializeField] private float _textSpeed;
+        public event Action OnRestartButtonClicked;
+        public event Action OnStartWindowShowed;
+        
+        [SerializeField] private StartWindow _startWindow;
+        [SerializeField] private LoseWindow _loseWindow;
+        [SerializeField] private GameWindow _gameWindow;
 
-        private void Start()
+        public void Initialize()
         {
-            foreach (var shipContainer in _shipContainers) 
-                shipContainer.Initialize();
+            _gameWindow.Initialize();
+            _startWindow.Initialize();
 
-            StartCoroutine(ShowStartText());
+            _loseWindow.OnRestartClicked += RestartClicked;
         }
 
-        private IEnumerator ShowStartText()
+        public void ShowStartWindow()
         {
-            _headerLabel.Deactivate();
-            _scoreTableLabel.Deactivate();
-            foreach (var shipContainer in _shipContainers) shipContainer.Deactivate();
-
-            yield return new WaitForSeconds(1f);
-
-            _headerLabel.Activate();
-            yield return new DOTweenCYInstruction.WaitForCompletion(TweenText(_headerLabel));
-            
-            yield return new WaitForSeconds(1f);
-            
-            _scoreTableLabel.Activate();
-            foreach (var shipContainer in _shipContainers)
-            {
-                shipContainer.Activate();
-                foreach (var text in shipContainer.GetAllTexts()) 
-                    text.Deactivate();
-            }
-            
-            yield return new WaitForSeconds(1f);
-
-            foreach (var shipContainer in _shipContainers)
-            {
-                foreach (var text in shipContainer.GetAllTexts())
-                {
-                    text.Activate();
-                    yield return new DOTweenCYInstruction.WaitForCompletion(TweenText(text));
-                }
-            }
+            _startWindow.Show();
+            _startWindow.ShowFinished += StartWindowShowFinished;
         }
 
-        private Tweener TweenText(TMP_Text text)
+        private void StartWindowShowFinished()
         {
-            var completedText = text.text;
-            text.text = string.Empty;
-            return DOTween.To(() => text.text, x => text.text = x, completedText, _textSpeed)
-                .SetSpeedBased();
+            _startWindow.ShowFinished -= StartWindowShowFinished;
+            
+            _startWindow.Hide();
+            _gameWindow.Show(() => OnStartWindowShowed?.Invoke());
+        }
+
+        private void RestartClicked()
+        {
+            _gameWindow.Show();
+            OnRestartButtonClicked?.Invoke();
+        }
+
+        public void AddScore(int rewardScore)
+        {
+            _gameWindow.AddScore(rewardScore);
+        }
+
+        public void ShowLoseWindow()
+        {
+            _loseWindow.Show();
+        }
+
+        public void SetHealth(int playerHealth)
+        {
+            _gameWindow.SetHealth(playerHealth);
         }
     }
 }

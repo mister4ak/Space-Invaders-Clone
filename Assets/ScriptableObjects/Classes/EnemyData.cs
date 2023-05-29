@@ -8,7 +8,7 @@ namespace ScriptableObjects.Classes
         [SerializeField] private EnemyType _type;
         [SerializeField] private Sprite _baseSprite;
         [SerializeField] private Sprite _secondSprite;
-        [SerializeField] private int _rewardPoints;
+        [SerializeField] private int _rewardScore;
 
         public EnemyType Type => _type;
 
@@ -16,6 +16,6 @@ namespace ScriptableObjects.Classes
 
         public Sprite SecondSprite => _secondSprite;
 
-        public int RewardPoints => _rewardPoints;
+        public int RewardScore => _rewardScore;
     }
 }
