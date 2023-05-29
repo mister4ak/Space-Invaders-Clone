@@ -33,14 +33,36 @@ namespace Enemies
             Reset();
         }
 
-        private void OnBottomBorderReached()
-        {
-            OnEnemyReachedBottomBorder?.Invoke();
-        }
-
         public void SpawnEnemies()
         {
             StartCoroutine(SpawnEnemiesCoroutine());
+        }
+
+        public void StartMovement() => _isMoving = true;
+
+        public void StopMovement() => _isMoving = false;
+
+        public void Reset()
+        {
+            SetRandomShootTime();
+            _enemiesMover.Reset();
+        }
+
+        public void DespawnEnemies()
+        {
+            foreach (var enemy in _enemies)
+            {
+                enemy.Release();
+                enemy.Died -= EnemyDied;
+            }
+            _enemies.Clear();
+        }
+
+        private void Update()
+        {
+            if (!_isMoving) return;
+            _enemiesMover.Move();
+            HandleEnemyShot();
         }
 
         private IEnumerator SpawnEnemiesCoroutine()
@@ -56,23 +78,11 @@ namespace Enemies
             StartMovement();
         }
 
-        public void StartMovement() => _isMoving = true;
-
-        public void StopMovement() => _isMoving = false;
-
-        public void Reset()
+        private void OnBottomBorderReached()
         {
-            SetRandomShootTime();
-            _enemiesMover.Reset();
+            OnEnemyReachedBottomBorder?.Invoke();
         }
 
-        private void Update()
-        {
-            if (!_isMoving) return;
-            _enemiesMover.Move();
-            HandleEnemyShot();
-        }
-        
         private void HandleEnemyShot()
         {
             _shootTimer -= Time.deltaTime;

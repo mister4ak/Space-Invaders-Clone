@@ -42,13 +42,13 @@ namespace UI
         {
             DisableAllTexts();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
             _headerLabel.Activate();
         
             yield return new DOTweenCYInstruction.WaitForCompletion(TweenTextSymbols(_headerLabel));
             
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             
             _scoreTableLabel.Activate();
             ShowShipContainerImagesExceptText();

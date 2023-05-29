@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 688923291}
   _canvasGroup: {fileID: 688923292}
-  _fadeDuration: 0.25
+  _fadeDuration: 0.35
   _shipContainers:
   - {fileID: 716075890}
   - {fileID: 1929486587}
@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 690192417}
   _canvasGroup: {fileID: 690192414}
-  _fadeDuration: 0.25
+  _fadeDuration: 0.35
   _restartButton: {fileID: 279265139}
 --- !u!114 &690192416
 MonoBehaviour:
@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 913915684}
   _canvasGroup: {fileID: 913915682}
-  _fadeDuration: 0.25
+  _fadeDuration: 0.35
   _scoreText: {fileID: 575720874}
   _healthText: {fileID: 1447109833}
   _healthImagePrefab: {fileID: -1891379513143954980, guid: a2f89a315fd175e42bb91b71eeff3dc9, type: 3}

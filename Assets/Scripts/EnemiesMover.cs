@@ -66,7 +66,7 @@ public class EnemiesMover
 
     public void EnemyDied(Enemy enemy)
     {
-        if (_currentCellIndex > _enemies.IndexOf(enemy) || _currentCellIndex == _enemies.Count)
+        if (_currentCellIndex > _enemies.IndexOf(enemy) || _currentCellIndex == _enemies.Count - 1)
             _currentCellIndex--;
     }
 
@@ -74,6 +74,11 @@ public class EnemiesMover
     {
         _moveDirectionType = MoveDirectionType.Left;
         _currentCellIndex = 0;
+    }
+
+    private void MoveEnemy(float deltaX, float deltaY)
+    {
+        _enemies[_currentCellIndex].Move(deltaX, deltaY);
     }
 
     private void CheckSideBorders()
@@ -96,11 +101,6 @@ public class EnemiesMover
         var enemyPosition = _enemies[_currentCellIndex].transform.position;
         if (enemyPosition.y <= _enemiesMoveData.BottomBorder)
             OnBottomBorderReached?.Invoke();
-    }
-
-    private void MoveEnemy(float deltaX, float deltaY)
-    {
-        _enemies[_currentCellIndex].Move(deltaX, deltaY);
     }
 
     private void IncreaseCellIndex()

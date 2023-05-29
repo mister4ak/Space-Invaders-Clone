@@ -27,6 +27,22 @@ namespace UI
             _startWindow.ShowFinished += StartWindowShowFinished;
         }
 
+        public void ShowLoseWindow()
+        {
+            _gameWindow.Hide();
+            _loseWindow.Show();
+        }
+
+        public void AddScore(int rewardScore)
+        {
+            _gameWindow.AddScore(rewardScore);
+        }
+
+        public void SetHealth(int playerHealth)
+        {
+            _gameWindow.SetHealth(playerHealth);
+        }
+
         private void StartWindowShowFinished()
         {
             _startWindow.ShowFinished -= StartWindowShowFinished;
@@ -37,23 +53,8 @@ namespace UI
 
         private void RestartClicked()
         {
-            _gameWindow.Show();
-            OnRestartButtonClicked?.Invoke();
-        }
-
-        public void AddScore(int rewardScore)
-        {
-            _gameWindow.AddScore(rewardScore);
-        }
-
-        public void ShowLoseWindow()
-        {
-            _loseWindow.Show();
-        }
-
-        public void SetHealth(int playerHealth)
-        {
-            _gameWindow.SetHealth(playerHealth);
+            _loseWindow.Hide();
+            _gameWindow.Show(() => OnRestartButtonClicked?.Invoke());
         }
     }
 }

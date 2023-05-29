@@ -30,6 +30,11 @@ public class Player : MonoBehaviour, IDamageable
 
         _weapon.Initialize(ShooterType);
 
+        SetMaxHealth();
+    }
+
+    public void SetMaxHealth()
+    {
         _health = _playerData.MaxHealth;
     }
 

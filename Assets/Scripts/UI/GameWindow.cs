@@ -73,6 +73,8 @@ namespace UI
                 var healthImage = Instantiate(_healthImagePrefab, _healthImagesContainer);
                 _healthImages.Add(healthImage);
             }
+            
+            _healthText.text = _playerData.MaxHealth.ToString();
         }
 
         private void UpdateScoreText()
