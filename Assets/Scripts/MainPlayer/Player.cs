@@ -21,13 +21,16 @@ public class Player : MonoBehaviour, IDamageable
     public ShooterType ShooterType { get; private set; }
     public int Health => _health;
 
-    private void Awake()
+    public void Initialize()
     {
+        ShooterType = ShooterType.Player;
+        
         var movementInput = new KeyboardMovementInput(false);
         _mover = new PlayerMover(movementInput, transform, _playerData.MovementSpeed, _borderData);
 
-        ShooterType = ShooterType.Player;
         _weapon.Initialize(ShooterType);
+
+        _health = _playerData.MaxHealth;
     }
 
     public void TakeDamage()

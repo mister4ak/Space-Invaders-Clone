@@ -20,6 +20,7 @@ public sealed class Game : MonoBehaviour
     {
         _enemyHandler.Initialize();
         _gameUI.Initialize();
+        _player.Initialize();
 
         _gameUI.OnRestartButtonClicked += RestartLevel;
         _gameUI.OnStartWindowShowed += StartLevel;
