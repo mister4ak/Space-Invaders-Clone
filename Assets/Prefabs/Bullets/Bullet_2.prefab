@@ -25,15 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3953455771117307497, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
       propertyPath: m_Name
-      value: Bullet_1 1
+      value: Bullet_2
       objectReference: {fileID: 0}
     - target: {fileID: 7039948609796102992, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
       propertyPath: m_Size.x
-      value: 0.36490527
+      value: 0.2130934
       objectReference: {fileID: 0}
     - target: {fileID: 7039948609796102992, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
       propertyPath: m_Size.y
-      value: 0.74131817
+      value: 0.39566767
       objectReference: {fileID: 0}
     - target: {fileID: 8635012984064309708, guid: ad290f059f7db1044ad365cb07f15ad9, type: 3}
       propertyPath: m_RootOrder

@@ -52,12 +52,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3240755119709778328, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
+      propertyPath: _bulletSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240755119709778328, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
       propertyPath: _bulletPrefab
       value: 
       objectReference: {fileID: 3986401613163321376, guid: 495861c7677c048448b030f3f64e5a7f, type: 3}
     - target: {fileID: 4838219185178697313, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
       propertyPath: m_Size.x
-      value: 1.0107529
+      value: 0.67701626
       objectReference: {fileID: 0}
     - target: {fileID: 5573382172621898786, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
       propertyPath: m_Name
@@ -70,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 6098363262912508783, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c8e61345d3987184b973a87b6d24e87a, type: 3}
+      objectReference: {fileID: 21300000, guid: b5f20663b636d4b4eb010e7fb8012499, type: 3}
     - target: {fileID: 6098363262912508783, guid: c63612f077534be4e9decfe79f94de1d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

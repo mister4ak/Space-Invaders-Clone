@@ -14,8 +14,10 @@ namespace Enemies
         public event Action OnAllEnemiesDied;
         public event Action<EnemyData> OnEnemyDied;
 
+        [Header("References")]
         [SerializeField] private Grid _grid;
         [SerializeField] private EnemyFactory _enemyFactory;
+        [Header("Data")]
         [SerializeField] private EnemiesMoveData _enemiesMoveData;
         [SerializeField] private float _minShootCooldown = 1f;
         [SerializeField] private float _maxShootCooldown = 10f;

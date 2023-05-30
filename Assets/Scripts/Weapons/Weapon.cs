@@ -7,10 +7,12 @@ namespace Weapons
 {
     public class Weapon : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _shotPoint;
+        [Header("Data")]
         [SerializeField] private ShootDirectionType _shootDirectionType;
-        [SerializeField] private float _speed;
+        [SerializeField] private float _bulletSpeed = 5f;
 
         private ShooterType _shooterType;
         private bool _isReloaded;
@@ -32,7 +34,7 @@ namespace Weapons
         private void SpawnBullet()
         {
             var bullet = Pool.Get(_bulletPrefab, _shotPoint.position);
-            bullet.Initialize(_shooterType, GetShootDirection(), _speed);
+            bullet.Initialize(_shooterType, GetShootDirection(), _bulletSpeed);
             bullet.OnRelease += OnBulletRelease;
         }
 

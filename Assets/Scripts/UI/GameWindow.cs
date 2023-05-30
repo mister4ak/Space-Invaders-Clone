@@ -10,10 +10,12 @@ namespace UI
     public class GameWindow : BaseWindow
     {
         [Space]
+        [Header("References")]
         [SerializeField] private TMP_Text _scoreText;
         [SerializeField] private TMP_Text _healthText;
         [SerializeField] private HealthImage _healthImagePrefab;
         [SerializeField] private RectTransform _healthImagesContainer;
+        [Header("Data")]
         [SerializeField] private PlayerData _playerData;
 
         private readonly List<HealthImage> _healthImages = new();

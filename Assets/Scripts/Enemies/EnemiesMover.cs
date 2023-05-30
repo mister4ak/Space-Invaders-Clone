@@ -70,7 +70,9 @@ namespace Enemies
         {
             _moveDirectionType = MoveDirectionType.Left;
             _previousMoveDirectionType = _moveDirectionType;
+            _isSideBorderReached = false;
             _currentCellIndex = 0;
+            _timer = 0f;
         }
 
         private void MoveEnemy(float deltaX, float deltaY)

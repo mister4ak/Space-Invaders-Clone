@@ -15,8 +15,10 @@ namespace MainPlayer
         public event Action OnTakeDamage;
         public event Action OnDied;
         
+        [Header("References")]
         [SerializeField] private Weapon _weapon;
         [SerializeField] private PlayerAnimator _animator;
+        [Header("Data")]
         [SerializeField] private BorderData _borderData;
         [SerializeField] private PlayerData _playerData;
     
