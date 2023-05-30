@@ -6,12 +6,16 @@ namespace Enemies
 {
     public class Grid : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private Cell _cellPrefab;
         [SerializeField] private List<Cell> _cells;
+        [Header("Data")]
         [SerializeField] private int _rowsCount = 5;
         [SerializeField] private int _columnsCount = 11;
+        [Space(10)]
         [SerializeField] private float _xPadding = 1f;
         [SerializeField] private float _yPadding = 1f;
+        [Space(10)]
         [SerializeField] private bool _showGizmo;
     
         public List<Cell> Cells => _cells;
