@@ -1,5 +1,7 @@
-﻿using Common;
+﻿using System.Collections;
+using Common;
 using Enemies;
+using Extensions;
 using ScriptableObjects.Classes;
 using UI;
 using UnityEngine;
@@ -14,6 +16,7 @@ public sealed class Game : MonoBehaviour
     [SerializeField] private float _delayAfterPlayerDamage = 1.5f;
     [SerializeField] private float _delayAfterLose = 2f;
     [SerializeField] private float _delayAfterWin = 1f;
+    [SerializeField] private float _delayBeforePlayerRespawn = 1f;
         
     private void Awake()
     {
@@ -37,11 +40,14 @@ public sealed class Game : MonoBehaviour
     private void StartLevel()
     {
         _enemyHandler.SpawnEnemies();
+        
+        _player.Activate();
         _player.StartMovement();
     }
 
     private void RestartLevel()
     {
+        _enemyHandler.Reset();
         _player.SetMaxHealth();
         _gameUI.SetHealth(_player.Health);
 
@@ -56,7 +62,6 @@ public sealed class Game : MonoBehaviour
         {
             _player.IncreaseHealth();
             _gameUI.SetHealth(_player.Health);
-            
             _enemyHandler.Reset();
             
             StartLevel();
@@ -70,21 +75,31 @@ public sealed class Game : MonoBehaviour
 
         StartCoroutine(Helper.WaitCoroutine(_delayAfterLose, () =>
         {
+            _player.Deactivate();
             _enemyHandler.DespawnEnemies();
+            _enemyHandler.Reset();
             _gameUI.ShowLoseWindow();
         }));
     }
 
     private void PlayerTakeDamage()
     {
+        StartCoroutine(PlayerTakeDamageCoroutine());
+    }
+    
+    private IEnumerator PlayerTakeDamageCoroutine()
+    {
         _enemyHandler.StopMovement();
+
+        yield return Helper.GetWait(_delayAfterPlayerDamage);
         
-        StartCoroutine(Helper.WaitCoroutine(_delayAfterPlayerDamage, () =>
-        {
-            _gameUI.SetHealth(_player.Health);
-            _enemyHandler.StartMovement();
-            _player.Respawn();
-        }));
+        _gameUI.SetHealth(_player.Health);
+        _enemyHandler.StartMovement();
+        _player.Deactivate();
+        
+        yield return Helper.GetWait(_delayBeforePlayerRespawn);
+        
+        _player.Respawn();
     }
 
     private void EnemyDied(EnemyData enemyData)

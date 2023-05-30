@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4051258934774736442}
   - component: {fileID: 6098363262912508783}
+  - component: {fileID: 7713415983099164484}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -115,6 +116,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7713415983099164484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794743236912567573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af336191220348c8abed5841066b4560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6098363262912508783}
 --- !u!1 &5573382172621898786
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 3240755119709778328}
-  _type: 0
+  _data: {fileID: 0}
+  _enemyAnimator: {fileID: 7713415983099164484}
   _explosionFXPrefab: {fileID: 2685267359947275854, guid: 07005d7cb2738c54386eb6e12dbac728, type: 3}
 --- !u!61 &4838219185178697313
 BoxCollider2D:

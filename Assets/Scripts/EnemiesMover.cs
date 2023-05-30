@@ -73,6 +73,7 @@ public class EnemiesMover
     public void Reset()
     {
         _moveDirectionType = MoveDirectionType.Left;
+        _previousMoveDirectionType = _moveDirectionType;
         _currentCellIndex = 0;
     }
 

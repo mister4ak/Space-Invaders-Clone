@@ -1,5 +1,6 @@
 using System;
 using Common.ObjectPool;
+using Enemies;
 using ScriptableObjects.Classes;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Enemy : PoolItem, IDamageable
 
     [SerializeField] private Weapon _weapon;
     [SerializeField] private EnemyData _data;
+    [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private ExplosionFX _explosionFXPrefab;
 
     public ShooterType ShooterType { get; private set; }
@@ -18,10 +20,12 @@ public class Enemy : PoolItem, IDamageable
     {
         ShooterType = ShooterType.Enemy;
         _weapon.Initialize(ShooterType);
+        _enemyAnimator.Initialize(_data);
     }
 
     public void Move(float deltaX, float deltaY)
     {
+        _enemyAnimator.Animate();
         transform.position += new Vector3(deltaX, deltaY);
     }
 

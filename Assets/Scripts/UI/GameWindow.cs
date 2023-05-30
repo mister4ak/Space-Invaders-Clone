@@ -68,7 +68,7 @@ namespace UI
 
         private void GenerateHealthImages()
         {
-            for (int i = 0; i < _playerData.MaxHealth; i++)
+            for (int i = 0; i < _playerData.MaxHealth - 1; i++)
             {
                 var healthImage = Instantiate(_healthImagePrefab, _healthImagesContainer);
                 _healthImages.Add(healthImage);
