@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using Grid = Enemies.Grid;
 
 namespace Editor
 {

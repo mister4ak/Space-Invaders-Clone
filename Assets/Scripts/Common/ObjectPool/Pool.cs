@@ -102,7 +102,6 @@ namespace Common.ObjectPool
 			where T : UnityEngine.Object, IPoolable
 		{
 			var instance = Instantiate(prefab, position, prefab.MyTransform().rotation, newParent);
-			//instance.transform.localScale = Vector3.one;
 			instance.name = prefab.name;
 			instance.Retain(id, prefab.name);
 			instance.SetActive(activate);

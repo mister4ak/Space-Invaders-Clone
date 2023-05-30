@@ -2,6 +2,7 @@
 using Common;
 using Enemies;
 using Extensions;
+using MainPlayer;
 using ScriptableObjects.Classes;
 using UI;
 using UnityEngine;
@@ -47,7 +48,7 @@ public sealed class Game : MonoBehaviour
 
     private void RestartLevel()
     {
-        _enemyHandler.Reset();
+        _enemyHandler.ResetData();
         _player.SetMaxHealth();
         _gameUI.SetHealth(_player.Health);
 
@@ -62,7 +63,7 @@ public sealed class Game : MonoBehaviour
         {
             _player.IncreaseHealth();
             _gameUI.SetHealth(_player.Health);
-            _enemyHandler.Reset();
+            _enemyHandler.ResetData();
             
             StartLevel();
         }));
@@ -77,7 +78,7 @@ public sealed class Game : MonoBehaviour
         {
             _player.Deactivate();
             _enemyHandler.DespawnEnemies();
-            _enemyHandler.Reset();
+            _enemyHandler.ResetData();
             _gameUI.ShowLoseWindow();
         }));
     }

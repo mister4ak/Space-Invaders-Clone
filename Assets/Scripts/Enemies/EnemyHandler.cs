@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
 using Extensions;
 using ScriptableObjects.Classes;
 using UnityEngine;
@@ -30,7 +29,7 @@ namespace Enemies
         {
             _enemiesMover = new EnemiesMover(_enemies, _enemiesMoveData);
             _enemiesMover.OnBottomBorderReached += OnBottomBorderReached;
-            Reset();
+            ResetData();
         }
 
         public void SpawnEnemies()
@@ -42,10 +41,10 @@ namespace Enemies
 
         public void StopMovement() => _isMoving = false;
 
-        public void Reset()
+        public void ResetData()
         {
             SetRandomShootTime();
-            _enemiesMover.Reset();
+            _enemiesMover.ResetData();
         }
 
         public void DespawnEnemies()

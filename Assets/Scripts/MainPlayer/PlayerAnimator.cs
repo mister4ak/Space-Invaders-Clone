@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace MainPlayer
 {
     public class PlayerAnimator : MonoBehaviour
     {

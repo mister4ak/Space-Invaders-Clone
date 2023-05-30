@@ -69,11 +69,5 @@ namespace Extensions
 					callback?.Invoke();
 				});
 		}
-
-		public static bool IsActive(this CanvasGroup canvasGroup)
-		{
-			bool isActive = Mathf.Approximately(canvasGroup.alpha, 1f);
-			return isActive;
-		}
 	}
 }

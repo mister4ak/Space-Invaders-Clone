@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common.ObjectPool;
+using Enums;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Enemies
 {
     public class EnemyFactory : MonoBehaviour
     {

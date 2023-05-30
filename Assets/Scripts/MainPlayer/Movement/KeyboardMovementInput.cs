@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-public class KeyboardMovementInput : IMovementInput
+namespace MainPlayer.Movement
 {
-    private bool _isSmoothed;
-
-    public KeyboardMovementInput(bool isSmoothed)
+    public class KeyboardMovementInput : IMovementInput
     {
-        _isSmoothed = isSmoothed;
-    }
+        private readonly bool _isSmoothed;
 
-    public Vector2 GetInput()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        return _isSmoothed ? new Vector2(moveHorizontal, moveVertical) : new Vector2(moveHorizontal, moveVertical).normalized;
+        public KeyboardMovementInput(bool isSmoothed)
+        {
+            _isSmoothed = isSmoothed;
+        }
+
+        public Vector2 GetInput()
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            return _isSmoothed ? new Vector2(moveHorizontal, moveVertical) : new Vector2(moveHorizontal, moveVertical).normalized;
+        }
     }
 }

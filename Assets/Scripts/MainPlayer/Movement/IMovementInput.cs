@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public interface IMovementInput
+namespace MainPlayer.Movement
 {
-    Vector2 GetInput();
+    public interface IMovementInput
+    {
+        Vector2 GetInput();
+    }
 }
